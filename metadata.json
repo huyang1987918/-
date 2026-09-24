@@ -1,0 +1,6 @@
+{
+  "name": "OWTB 供应链管理后台",
+  "description": "基于OWTB（订单、仓储、运输、结算）体系的供应链运营管理后台，具备用户权限控制与数据实时监控看板。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,520 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #0f172a;
+    background-color: #f0f2f5;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  html.dark body {
+    color: #e3e3e3;
+    background-color: #131314;
+  }
+}
+
+/* Gemini-style minimalist scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #3c4043;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #5f6368;
+}
+
+/* ========================================================
+   LIGHT MODE HIGH CONTRAST & CARD HIERARCHY SYSTEM
+   Clear visual separation between canvas background (#f0f2f5)
+   and pure white (#ffffff) card containers.
+   ======================================================== */
+html:not(.dark),
+html:not(.dark) body,
+html:not(.dark) #root,
+html:not(.dark) main {
+  background-color: #f0f2f5 !important;
+}
+
+/* Ensure all page root containers map to #f0f2f5 in light mode */
+html:not(.dark) .bg-\[\#f8fafc\],
+html:not(.dark) .bg-\[\#f8fafd\] {
+  background-color: #f0f2f5 !important;
+}
+
+/* Card surfaces remain crisp pure white */
+html:not(.dark) .bg-white {
+  background-color: #ffffff !important;
+}
+
+/* Enhance card and container borders in light mode for distinct separation */
+html:not(.dark) .border-slate-200\/70,
+html:not(.dark) .border-slate-200\/60,
+html:not(.dark) .border-slate-200\/80,
+html:not(.dark) .border-slate-200 {
+  border-color: #d5dbe3 !important;
+}
+
+/* Internal card dividers in light mode */
+html:not(.dark) .border-slate-100 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Elevated depth for cards in light mode so they stand out crisply against the canvas */
+html:not(.dark) .shadow-2xs {
+  box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.07), 0 1px 2px -1px rgba(15, 23, 42, 0.05) !important;
+}
+
+html:not(.dark) .shadow-xs {
+  box-shadow: 0 2px 5px -1px rgba(15, 23, 42, 0.09), 0 1px 3px -1px rgba(15, 23, 42, 0.06) !important;
+}
+
+/* Subtle nested containers (filter bars, search fields, table headers) in light mode */
+html:not(.dark) .bg-slate-50,
+html:not(.dark) .bg-slate-50\/70 {
+  background-color: #f5f7fa !important;
+}
+
+html:not(.dark) .bg-slate-100,
+html:not(.dark) .bg-slate-100\/80 {
+  background-color: #ebedf2 !important;
+}
+
+/* Increase contrast for secondary unit text and timestamps in light mode */
+html:not(.dark) span.text-slate-400,
+html:not(.dark) p.text-slate-400 {
+  color: #64748b;
+}
+
+/* ========================================================
+   GEMINI DARK MODE THEME SYSTEM (Google Material 3 Dark)
+   Warm obsidian #131314 base, elevated containers #1e1f20,
+   translucent tinted badge chips, soft borders #3c4043,
+   and harmonious typography (#f1f3f4 / #e3e3e3 / #c4c7c5).
+   ======================================================== */
+html.dark {
+  color-scheme: dark;
+}
+
+/* 1. Surfaces & Elevations */
+html.dark,
+html.dark body,
+html.dark #root {
+  background-color: #131314 !important;
+  color: #e3e3e3 !important;
+}
+
+/* Main Canvas / Page backgrounds */
+html.dark .bg-\[\#f8fafd\],
+html.dark .bg-\[\#f8fafc\],
+html.dark main {
+  background-color: #131314 !important;
+}
+
+/* Surface 1: Cards, Panels, Sidebars, Header */
+html.dark .bg-white {
+  background-color: #1e1f20 !important;
+}
+
+html.dark .bg-white\/95 {
+  background-color: rgba(30, 31, 32, 0.95) !important;
+  backdrop-filter: blur(16px) !important;
+}
+
+/* Surface 2: Subtle nested boxes & table backgrounds */
+html.dark .bg-slate-50,
+html.dark .bg-slate-50\/10,
+html.dark .bg-slate-50\/20,
+html.dark .bg-slate-50\/30,
+html.dark .bg-slate-50\/40,
+html.dark .bg-slate-50\/50,
+html.dark .bg-slate-50\/60,
+html.dark .bg-slate-50\/70,
+html.dark .bg-slate-50\/80,
+html.dark .bg-slate-50\/90 {
+  background-color: #18191b !important;
+}
+
+/* Surface 3: Secondary pill buttons, search bars, chips */
+html.dark .bg-slate-100,
+html.dark .bg-slate-100\/10,
+html.dark .bg-slate-100\/20,
+html.dark .bg-slate-100\/30,
+html.dark .bg-slate-100\/40,
+html.dark .bg-slate-100\/50,
+html.dark .bg-slate-100\/60,
+html.dark .bg-slate-100\/70,
+html.dark .bg-slate-100\/80,
+html.dark .bg-slate-100\/90 {
+  background-color: #282a2c !important;
+}
+
+html.dark .bg-slate-200,
+html.dark .bg-slate-200\/50,
+html.dark .bg-slate-200\/60,
+html.dark .bg-slate-200\/70,
+html.dark .bg-slate-200\/80 {
+  background-color: #333538 !important;
+}
+
+/* 2. Google Gemini Typography System */
+html.dark .text-slate-900,
+html.dark .text-slate-800,
+html.dark .text-\[\#1f1f1f\] {
+  color: #f1f3f4 !important;
+}
+
+html.dark .text-slate-700 {
+  color: #e3e3e3 !important;
+}
+
+html.dark .text-slate-600 {
+  color: #c4c7c5 !important;
+}
+
+html.dark .text-slate-500 {
+  color: #9aa0a6 !important;
+}
+
+html.dark .text-slate-400 {
+  color: #80868b !important;
+}
+
+html.dark .text-slate-300 {
+  color: #5f6368 !important;
+}
+
+/* 3. Smooth Non-Jarring Borders (Gemini #3c4043) */
+html.dark .border-slate-100,
+html.dark .border-slate-200,
+html.dark .border-slate-200\/60,
+html.dark .border-slate-200\/70,
+html.dark .border-slate-200\/80 {
+  border-color: #3c4043 !important;
+}
+
+html.dark .border-slate-300 {
+  border-color: #4a4e52 !important;
+}
+
+html.dark .divide-slate-100 > :not([hidden]) ~ :not([hidden]),
+html.dark .divide-slate-200 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #282a2c !important;
+}
+
+/* 4. Buttons and Button Boxes (Solves the jarring issue) */
+/* Secondary / Neutral outline buttons */
+html.dark button.border-slate-200\/80,
+html.dark button.border-slate-200 {
+  border-color: #3c4043 !important;
+  color: #e3e3e3 !important;
+}
+
+html.dark .hover\:bg-slate-50:hover {
+  background-color: #282a2c !important;
+  color: #f1f3f4 !important;
+}
+
+html.dark .hover\:bg-slate-100:hover,
+html.dark .hover\:bg-slate-100\/70:hover,
+html.dark .hover\:bg-slate-100\/80:hover {
+  background-color: #333538 !important;
+  color: #f1f3f4 !important;
+}
+
+html.dark .hover\:bg-slate-200\/50:hover,
+html.dark .hover\:bg-slate-200\/60:hover,
+html.dark .hover\:bg-slate-200\/70:hover {
+  background-color: #3c4043 !important;
+  color: #ffffff !important;
+}
+
+/* 5. Status Badges, Chips & Colored Button Boxes (Gemini Translucent Style) */
+/* Emerald / Success */
+html.dark .bg-emerald-50,
+html.dark .bg-emerald-50\/50,
+html.dark .bg-emerald-50\/70,
+html.dark .bg-emerald-50\/80,
+html.dark .bg-emerald-50\/90,
+html.dark .bg-emerald-100,
+html.dark .bg-emerald-100\/70,
+html.dark .bg-emerald-100\/80 {
+  background-color: rgba(7, 193, 96, 0.16) !important;
+}
+
+html.dark .text-emerald-700,
+html.dark .text-emerald-800,
+html.dark .text-emerald-900,
+html.dark .text-emerald-600 {
+  color: #4ade80 !important;
+}
+
+html.dark .border-emerald-100,
+html.dark .border-emerald-200,
+html.dark .border-emerald-200\/60,
+html.dark .border-emerald-200\/70,
+html.dark .border-emerald-200\/80 {
+  border-color: rgba(74, 222, 128, 0.28) !important;
+}
+
+html.dark .hover\:bg-emerald-50:hover,
+html.dark .hover\:bg-emerald-50\/50:hover,
+html.dark .hover\:bg-emerald-100\/70:hover,
+html.dark .hover\:bg-emerald-100\/80:hover {
+  background-color: rgba(7, 193, 96, 0.26) !important;
+}
+
+/* Amber / Warning */
+html.dark .bg-amber-50,
+html.dark .bg-amber-50\/50,
+html.dark .bg-amber-50\/70,
+html.dark .bg-amber-50\/80,
+html.dark .bg-amber-50\/90,
+html.dark .bg-amber-100,
+html.dark .bg-amber-100\/70,
+html.dark .bg-amber-100\/80 {
+  background-color: rgba(245, 158, 11, 0.16) !important;
+}
+
+html.dark .text-amber-700,
+html.dark .text-amber-800,
+html.dark .text-amber-900,
+html.dark .text-amber-600 {
+  color: #fbbf24 !important;
+}
+
+html.dark .border-amber-100,
+html.dark .border-amber-200,
+html.dark .border-amber-200\/60,
+html.dark .border-amber-200\/70,
+html.dark .border-amber-200\/80 {
+  border-color: rgba(251, 191, 36, 0.28) !important;
+}
+
+html.dark .hover\:bg-amber-50:hover,
+html.dark .hover\:bg-amber-50\/80:hover,
+html.dark .hover\:bg-amber-100\/70:hover,
+html.dark .hover\:bg-amber-100\/80:hover {
+  background-color: rgba(245, 158, 11, 0.26) !important;
+}
+
+/* Rose / Error / Alerts */
+html.dark .bg-rose-50,
+html.dark .bg-rose-50\/50,
+html.dark .bg-rose-50\/80,
+html.dark .bg-rose-100 {
+  background-color: rgba(244, 63, 94, 0.16) !important;
+}
+
+html.dark .text-rose-700,
+html.dark .text-rose-800,
+html.dark .text-rose-900,
+html.dark .text-rose-600 {
+  color: #fb7185 !important;
+}
+
+html.dark .border-rose-100,
+html.dark .border-rose-200 {
+  border-color: rgba(251, 113, 133, 0.28) !important;
+}
+
+/* Sky & Blue / Informational */
+html.dark .bg-sky-50,
+html.dark .bg-sky-50\/50,
+html.dark .bg-sky-100,
+html.dark .bg-blue-50,
+html.dark .bg-blue-100 {
+  background-color: rgba(14, 165, 233, 0.16) !important;
+}
+
+html.dark .text-sky-700,
+html.dark .text-sky-600,
+html.dark .text-blue-700,
+html.dark .text-blue-600 {
+  color: #38bdf8 !important;
+}
+
+html.dark .border-sky-100,
+html.dark .border-sky-200,
+html.dark .border-sky-200\/60 {
+  border-color: rgba(56, 189, 248, 0.28) !important;
+}
+
+/* Teal & Cyan */
+html.dark .bg-teal-50,
+html.dark .bg-teal-100,
+html.dark .bg-cyan-50 {
+  background-color: rgba(20, 184, 166, 0.16) !important;
+}
+
+html.dark .text-teal-700,
+html.dark .text-teal-600 {
+  color: #2dd4bf !important;
+}
+
+html.dark .border-teal-100,
+html.dark .border-teal-200 {
+  border-color: rgba(45, 212, 191, 0.28) !important;
+}
+
+/* Violet, Indigo & Purple (Billing / BMS / OMS smart routing) */
+html.dark .bg-violet-50,
+html.dark .bg-violet-100,
+html.dark .bg-purple-50,
+html.dark .bg-purple-50\/30,
+html.dark .bg-purple-50\/50,
+html.dark .bg-purple-50\/70,
+html.dark .bg-purple-100,
+html.dark .bg-indigo-50,
+html.dark .bg-indigo-50\/50,
+html.dark .bg-indigo-100 {
+  background-color: rgba(168, 85, 247, 0.16) !important;
+}
+
+html.dark .text-violet-700,
+html.dark .text-violet-600,
+html.dark .text-purple-700,
+html.dark .text-purple-600,
+html.dark .text-purple-500,
+html.dark .text-indigo-700,
+html.dark .text-indigo-600 {
+  color: #c084fc !important;
+}
+
+html.dark .border-violet-100,
+html.dark .border-violet-200,
+html.dark .border-violet-200\/60,
+html.dark .border-purple-100,
+html.dark .border-purple-200,
+html.dark .border-purple-200\/60,
+html.dark .border-purple-200\/70,
+html.dark .border-indigo-100,
+html.dark .border-indigo-200,
+html.dark .border-indigo-200\/60 {
+  border-color: rgba(192, 132, 252, 0.28) !important;
+}
+
+html.dark .hover\:bg-purple-50\/30:hover,
+html.dark .hover\:bg-purple-50:hover,
+html.dark .hover\:bg-indigo-100:hover {
+  background-color: rgba(168, 85, 247, 0.24) !important;
+}
+
+/* Primary purple buttons in dark mode */
+html.dark .bg-purple-600 {
+  background-color: #7c3aed !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 14px rgba(124, 58, 237, 0.3) !important;
+}
+
+html.dark .bg-purple-600:hover,
+html.dark .hover\:bg-purple-700:hover {
+  background-color: #6d28d9 !important;
+}
+
+/* Recharts Tooltips in Gemini Dark Mode */
+html.dark .recharts-default-tooltip {
+  background-color: #1e1f20 !important;
+  border-color: #3c4043 !important;
+  color: #f1f3f4 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
+  border-radius: 12px !important;
+}
+
+html.dark .recharts-tooltip-label,
+html.dark .recharts-tooltip-item,
+html.dark .recharts-tooltip-item-name,
+html.dark .recharts-tooltip-item-value {
+  color: #e3e3e3 !important;
+}
+
+/* 6. Form Inputs & Select Controls (Gemini clean dark fields) */
+html.dark input,
+html.dark select,
+html.dark textarea {
+  background-color: #1e1f20 !important;
+  color: #f1f3f4 !important;
+  border-color: #3c4043 !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #8e918f !important;
+}
+
+html.dark input:focus,
+html.dark select:focus,
+html.dark textarea:focus {
+  background-color: #282a2c !important;
+  border-color: #07c160 !important;
+  box-shadow: 0 0 0 2px rgba(7, 193, 96, 0.25) !important;
+}
+
+html.dark select option {
+  background-color: #1e1f20 !important;
+  color: #e3e3e3 !important;
+}
+
+/* 7. Tables in Dark Mode */
+html.dark table thead tr {
+  background-color: #18191b !important;
+  border-color: #282a2c !important;
+}
+
+html.dark table thead th {
+  color: #9aa0a6 !important;
+}
+
+html.dark table tbody tr {
+  border-color: #282a2c !important;
+}
+
+html.dark table tbody tr:hover,
+html.dark table tbody tr.hover\:bg-emerald-50\/40:hover {
+  background-color: #282a2c !important;
+}
+
+html.dark table tbody tr.\!bg-emerald-50\/80 {
+  background-color: rgba(7, 193, 96, 0.18) !important;
+}
+
+/* 8. Popovers, Modals & Dropdown Menus */
+html.dark .shadow-xl,
+html.dark .shadow-2xl {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Gemini glowing green action button */
+html.dark .bg-\[\#07c160\] {
+  background-color: #07c160 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 14px rgba(7, 193, 96, 0.25) !important;
+}
+
+html.dark .bg-\[\#07c160\]:hover {
+  background-color: #06a953 !important;
+}
